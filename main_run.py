@@ -22,7 +22,7 @@ NUM_THREAD = 2
 
 EARLY_STOP_EPOCH = None
 EVAL_EPOCH = 20
-MODEL_SAVE_EPOCH = 200
+MODEL_SAVE_EPOCH = 5
 show_iter_num = 500
 LABEL_SMOOTH = True
 Bi_GRU = True
@@ -202,7 +202,7 @@ def main(train_loader, test_loader, num_writers):
         cer = train(train_loader, model, dis_opt, gen_opt, rec_opt, cla_opt, epoch)
 
         if epoch % MODEL_SAVE_EPOCH == 0:
-            folder_weights = 'save_weights'
+            folder_weights = '/mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights'
             if not os.path.exists(folder_weights):
                 os.makedirs(folder_weights)
             torch.save(model.state_dict(), folder_weights+'/contran-%d.model'%epoch)
@@ -220,9 +220,9 @@ def main(train_loader, test_loader, num_writers):
                 min_count += 1
             if min_count >= EARLY_STOP_EPOCH:
                 print('Early stop at %d and the best epoch is %d' % (epoch, min_idx))
-                model_url = 'save_weights/contran-'+str(min_idx)+'.model'
+                model_url = '/mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights/contran-'+str(min_idx)+'.model'
                 os.system('mv '+model_url+' '+model_url+'.bak')
-                os.system('rm save_weights/contran-*.model')
+                os.system('rm /mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights/contran-*.model')
                 break
 
 def rm_old_model(index):
@@ -230,7 +230,7 @@ def rm_old_model(index):
     for m in models:
         epoch = int(m.split('.')[0].split('-')[1])
         if epoch < index:
-            os.system('rm save_weights/contran-'+str(epoch)+'.model')
+            os.system('rm /mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights/contran-'+str(epoch)+'.model')
 
 if __name__ == '__main__':
     print(time.ctime())
