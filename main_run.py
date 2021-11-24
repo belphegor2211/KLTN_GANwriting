@@ -176,7 +176,7 @@ def main(train_loader, test_loader, num_writers):
     model = ConTranModel(num_writers, show_iter_num, OOV).to(gpu)
 
     if CurriculumModelID > 0:
-        model_file = 'save_weights/contran-' + str(CurriculumModelID) +'.model'
+        model_file = '/mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights/contran-' + str(CurriculumModelID) +'.model'
         print('Loading ' + model_file)
         model.load_state_dict(torch.load(model_file)) #load
         #pretrain_dict = torch.load(model_file)
@@ -226,7 +226,7 @@ def main(train_loader, test_loader, num_writers):
                 break
 
 def rm_old_model(index):
-    models = glob.glob('save_weights/*.model')
+    models = glob.glob('/mydrive/MyDrive/GAN/KLTN_GANwriting/save_weights/*.model')
     for m in models:
         epoch = int(m.split('.')[0].split('-')[1])
         if epoch < index:

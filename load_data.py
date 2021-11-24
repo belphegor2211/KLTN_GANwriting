@@ -19,14 +19,14 @@ NORMAL = True
 OUTPUT_MAX_LEN = MAX_CHARS+2 # <GO>+groundtruth+<END>
 
 '''The folder of IAM word images, please change to your own one before run it!!'''
-img_base = r'C:\Users\ASUS\Code\research-GANwriting\words'
-text_corpus = 'corpora_english/brown-azAZ.tr'
+img_base = '/content/words'
+text_corpus = '/mydrive/MyDrive/GAN/KLTN_GANwriting/corpora_english/brown-azAZ.tr'
 
 with open(text_corpus, 'r') as _f:
     text_corpus = _f.read().split()
 
-src = 'Groundtruth/gan.iam.tr_va.gt.filter27'
-tar = 'Groundtruth/gan.iam.test.gt.filter27'
+src = '/mydrive/MyDrive/GAN/KLTN_GANwriting/Groundtruth/gan.iam.tr_va.gt.filter27'
+tar = '/mydrive/MyDrive/GAN/KLTN_GANwriting/Groundtruth/gan.iam.test.gt.filter27'
 
 def labelDictionary():
     labels = list(string.ascii_lowercase + string.ascii_uppercase)
