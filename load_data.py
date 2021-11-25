@@ -8,7 +8,7 @@ from pairs_idx_wid_iam import wid2label_tr, wid2label_te
 
 CREATE_PAIRS = False
 
-IMG_HEIGHT = 64
+IMG_HEIGHT = 32
 IMG_WIDTH = 216
 MAX_CHARS = 12
 # NUM_CHANNEL = 15
